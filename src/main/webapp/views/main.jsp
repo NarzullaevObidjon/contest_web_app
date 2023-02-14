@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-
+<h1><a href="/views/admin/createTest.jsp">Admin</a></h1>
 </body>
 </html>
