@@ -4,20 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a035917d-c31f-4253-831a-8f422aef0c61" name="Changes" comment="initial commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/pdp/contest_web/daos/DAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/pdp/contest_web/domains/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/pdp/contest_web/dtos/UserDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/pdp/contest_web/filters/SecurityFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/pdp/contest_web/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/uz/pdp/contest_web/utils/BaseUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/fragments/css.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/fragments/js.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/pages/test/test.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/pages/user/users.jsp" afterDir="false" />
+    <list default="true" id="a035917d-c31f-4253-831a-8f422aef0c61" name="Changes" comment=" commit-2">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/pages/test/contests.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/pages/user/profile.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/pdp/contest_web/filters/SecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/pdp/contest_web/filters/SecurityFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uz/pdp/contest_web/servlets/HelloServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uz/pdp/contest_web/servlets/MainServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/pages/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/pages/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/pages/test/test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/pages/test/contest.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +27,13 @@
         <option value="JavaScript File" />
         <option value="Jsp File" />
       </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Obidjon" />
+      </map>
     </option>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -64,6 +66,9 @@
       <recent name="D:\java\jakarta\contest_web_app\src\main\webapp\resources\pages" />
       <recent name="D:\java\jakarta\contest_web_app\src\main\webapp\resources" />
       <recent name="D:\java\jakarta\contest_web_app\src\main\java\uz\pdp\contest_web" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\java\jakarta\contest_web_app\src\main\webapp\resources\images" />
     </key>
   </component>
   <component name="RunManager">
@@ -98,7 +103,7 @@
       <option name="presentableId" value="Default" />
       <updated>1676376696255</updated>
       <workItem from="1676376697502" duration="2000" />
-      <workItem from="1676377352683" duration="1071000" />
+      <workItem from="1676377352683" duration="4342000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1676377675499</created>
@@ -107,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676377675499</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary=" commit-2">
+      <created>1676378535385</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1676378535385</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,7 +130,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Obidjon" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -126,6 +150,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+    <MESSAGE value=" commit-2" />
+    <option name="LAST_COMMIT_MESSAGE" value=" commit-2" />
   </component>
 </project>
