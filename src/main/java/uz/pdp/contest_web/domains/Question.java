@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -20,6 +23,7 @@ private Test test_id;
 private String question;
 @OneToOne
 private Document photoDocumentId;
-private String answers;
+@ElementCollection
+private List<String> answers;
 private Byte correctAnswerIndex;
 }
