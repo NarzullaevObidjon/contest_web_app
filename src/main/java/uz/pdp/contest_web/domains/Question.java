@@ -19,10 +19,10 @@ public class Question implements BaseEntity{
 private Long id;
 
 @ManyToOne
-private Test test_id;
+private Test test;
 private String question;
-@OneToOne
-private Document photoDocumentId;
+@ManyToOne
+    private Document photoDocumentId;
 private String answers;
 private Byte correctAnswerIndex;
 }

@@ -42,6 +42,8 @@ public class User implements BaseEntity {
     private Document photoDocumentId;
     @OneToMany(mappedBy = "user")
     private Set<Certificate> certificates;
+    @OneToMany(mappedBy = "user")
+    private Set<ResultUser> resultUsers;
 
 
     public enum Role {

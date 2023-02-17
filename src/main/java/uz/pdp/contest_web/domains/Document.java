@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Set;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -23,8 +26,8 @@ public class Document implements BaseEntity{
 
     @OneToOne(mappedBy = "photoDocumentId")
     private User user ;
-    @OneToOne(mappedBy = "photoDocumentId")
-    private Question question;
+    @OneToMany(mappedBy = "photoDocumentId")
+    private Set<Question> question;
 
     @OneToOne(mappedBy = "documentId")
     private Certificate certificate;

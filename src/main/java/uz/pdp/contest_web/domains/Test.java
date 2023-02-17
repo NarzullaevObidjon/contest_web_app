@@ -35,10 +35,10 @@ public class Test  implements BaseEntity{
     private Long interval;
     @Basic(optional = false)
     private Long creator_id;
-    @OneToMany(mappedBy ="test_id")
+    @OneToMany(mappedBy ="test")
     private Set<Question> questions;
-    @OneToMany(mappedBy = "test_id")
+    @OneToMany(mappedBy = "test")
     private Set<Certificate> certificates;
-    @OneToMany(mappedBy = "test_id")
+    @OneToMany(mappedBy = "test")
     private Set<ResultUser> resultUsers;
 }

@@ -15,7 +15,7 @@ public class Certificate implements BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    private Test test_id;
+    private Test test;
     @OneToOne
     private Document documentId;
     @ManyToOne
