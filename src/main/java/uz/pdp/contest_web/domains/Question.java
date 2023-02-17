@@ -23,7 +23,6 @@ private Test test_id;
 private String question;
 @OneToOne
 private Document photoDocumentId;
-@ElementCollection
-private List<String> answers;
+private String answers;
 private Byte correctAnswerIndex;
 }
