@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-@WebFilter(filterName = "SecurityFilter", urlPatterns = "/*")
+//@WebFilter(filterName = "SecurityFilter", urlPatterns = "/*")
 public class SecurityFilter implements Filter {
 
     List<String> BLACK_LIST = List.of(
