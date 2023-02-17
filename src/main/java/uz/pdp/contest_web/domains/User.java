@@ -39,7 +39,6 @@ public class User implements BaseEntity {
     @Timestamp
     private LocalDateTime blockedTill;
     @OneToOne
-    @Column(columnDefinition = "default 1")
     private Document photoDocumentId;
     @OneToMany(mappedBy = "user")
     private Set<Certificate> certificates;
