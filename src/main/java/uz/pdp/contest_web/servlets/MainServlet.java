@@ -1,37 +1,27 @@
 package uz.pdp.contest_web.servlets;
 
-import java.io.*;
-
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
-import uz.pdp.contest_web.daos.DocumentDAO;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import uz.pdp.contest_web.daos.UserDAO;
-import uz.pdp.contest_web.domains.Document;
-import uz.pdp.contest_web.domains.User;
 
-@WebServlet(name = "MainServlet", value = "/main")
+import java.io.IOException;
+import java.util.Objects;
+
+@WebServlet(name = "MainServlet", value = "/")
 public class MainServlet extends HttpServlet {
 
     public void init() {
+
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        UserDAO userDAO = UserDAO.get();
-        DocumentDAO documentDAO = DocumentDAO.get();
-        documentDAO.save(Document.builder()
-                .build());
-        User user = userDAO.save(User.builder()
-                .email("obid@gmail.com")
-                .username("obid0444")
-                .firstName("Obid")
-                .password("0444")
-                .country("Uzbekistan")
-                .build());
-        response.getWriter().write(user.toString());
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        request.getRequestDispatcher("/views/main.jsp").forward(request,response);
     }
-
     public void destroy() {
+
     }
 }

@@ -10,18 +10,13 @@ import uz.pdp.contest_web.domains.User;
 import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class TestDAO extends BaseDAO<Test, Integer>{
+public class TestDAO extends BaseDAO<Test, Long>{
     private static final ThreadLocal<TestDAO> daoThreadLocal = ThreadLocal.withInitial(TestDAO::new);
 
-
-    public List<Question> getQuestionByTestId(Long id){
-        begin();
-        Query query = em.createQuery("from Question where test.id =:id").setParameter("id", id);
-        List<Question> list = query.getResultList();
-        commit();
-        return list;
-    }
     public static TestDAO get(){return daoThreadLocal.get();}
 
-
+    public Test getLiveTest() {
+        Query query = em.createQuery("from tests where current_timestamp between startTime and endTime");
+        return (Test) query.getSingleResult();
+    }
 }

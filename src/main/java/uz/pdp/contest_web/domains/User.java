@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity(name = "users")
-@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = {"username", "email"}))
+@Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"}),@UniqueConstraint(columnNames = {"email"})})
 @Setter
 @Getter
 @AllArgsConstructor
@@ -36,6 +36,7 @@ public class User implements BaseEntity {
     private String country;
     @Enumerated(EnumType.STRING)
     private Role role;
+    private String blockCause;
     @Timestamp
     private LocalDateTime blockedTill;
     @OneToOne
@@ -45,6 +46,8 @@ public class User implements BaseEntity {
     @OneToMany(mappedBy = "user")
     private Set<ResultUser> resultUsers;
 
+    @OneToMany(mappedBy = "user")
+    private Set<ResultQuestion> resultQuestions;
 
     public enum Role {
         USER, ADMIN, SUPER_ADMIN
