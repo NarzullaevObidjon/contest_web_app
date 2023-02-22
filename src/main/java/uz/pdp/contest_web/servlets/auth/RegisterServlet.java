@@ -1,5 +1,6 @@
 package uz.pdp.contest_web.servlets.auth;
 
+import jakarta.mail.MessagingException;
 import uz.pdp.contest_web.utils.BaseUtil;
 import uz.pdp.contest_web.filters.SignUpFilter;
 
@@ -12,6 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import uz.pdp.contest_web.utils.EmailSender;
 
 import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 
 @WebServlet(name = "RegisterServlet", value = "/auth/signup")
@@ -25,7 +27,6 @@ public class RegisterServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/auth/signUp.jsp");
         dispatcher.forward(request, response);
     }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String code1 = request.getParameter("code");
@@ -37,15 +38,17 @@ public class RegisterServlet extends HttpServlet {
                 request.setAttribute("email", email);
                 map.remove(request.getSession().getId());
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/auth/signupfinal.jsp");
-                dispatcher.forward(request,response);
+                dispatcher.forward(request, response);
             } else {
                 response.sendRedirect("/auth/signup");
             }
         } else {
             String code = BaseUtil.generateCode();
             map.put(email, new EmailObject(code, System.currentTimeMillis() + 60 * 1000));
-            EmailSender.sendEmail(email, "Sarlavha", "Confirmation code : " + code);
-            request.setAttribute("email",email);
+            CompletableFuture.runAsync(() -> {
+                EmailSender.sendEmail(email, "Sarlavha", "Confirmation code : " + code);
+            });
+            request.setAttribute("email", email);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/auth/confirmation.jsp");
             dispatcher.forward(request, response);
         }

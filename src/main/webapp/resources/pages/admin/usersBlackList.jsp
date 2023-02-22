@@ -13,7 +13,8 @@
         Edit User
     </title>
     <link rel="stylesheet" href="/resources/css/admin/users.css">
-    <jsp:include page="/fragments/css.jsp"/>
+    <jsp:include page="/resources/fragments/css.jsp"/>
+    <script src="jquery-3.6.3.min.js"></script>
 </head>
 <body>
 <nav class="navbar bg-body-tertiary">
@@ -60,13 +61,13 @@
 <%--            </c:choose>--%>
         </td>
         <td>
-            <a href="/admin/users/edit?userId=<c:out value="${user.getId()}"/>"><img src="/resources/images/edit_icon.png" width="25px" height="25px"></a>
+            <a href="/admin/usersBlocked/edit?userId=<c:out value="${user.getId()}"/>"><img src="/resources/images/edit_icon.png" width="25px" height="25px"></a>
         </td>
     </tr>
     </c:forEach>
     </tbody>
 </table>
 </container>
-<jsp:include page="/fragments/js.jsp"/>
+<jsp:include page="/resources/fragments/js.jsp"/>
 </body>
 </html>

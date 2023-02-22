@@ -31,11 +31,9 @@ public class UserDAO extends BaseDAO<User, Long> {
         return user;
     }
 
-    public List<User> findAll() {
-        begin();
-        List<User> selectAFromUsersA = em.createQuery("SELECT a FROM users a", User.class).getResultList();
-        commit();
-        return selectAFromUsersA;
+    public List<User> findAll(){
+        return em.createQuery("SELECT a FROM users a", User.class).getResultList();
     }
+
 
 }

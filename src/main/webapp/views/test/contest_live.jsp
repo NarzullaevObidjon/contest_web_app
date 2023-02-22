@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Contest Live</title>
-    <jsp:include page="/fragments/css.jsp"></jsp:include>
+    <jsp:include page="/resources/fragments/css.jsp"></jsp:include>
     <style>
         .center {
             margin: auto;
@@ -54,6 +54,6 @@
         </div>
     </div>
 </div>
-<jsp:include page="/fragments/js.jsp"></jsp:include>
+<jsp:include page="/resources/fragments/js.jsp"></jsp:include>
 </body>
 </html>

@@ -1,9 +1,21 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<%--
+  Created by IntelliJ IDEA.
+  User: hnodir
+  Date: 16/02/23
+  Time: 18:44
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+
+<html lang="en">
 <head>
-    <title>Main menu</title>
-    <jsp:include page="/resources/fragments/css.jsp"></jsp:include>
+    <meta charset="UTF-8">
+<%--    <meta name="viewport" content="width=device-width, initial-scale=1.0">--%>
+    <title>Vertical Card Slider</title>
+    <jsp:include page="/resources/fragments/css.jsp"/>
+    <link rel="stylesheet" href="/resources/css/style.css">
 </head>
 <body>
 <header>
@@ -37,13 +49,18 @@
                         <a class="nav-link"href="http://localhost:8080/auth/logout">Log Out</a>
                     </li>
                 </c:if>
-                <li class="nav-item">
-                    <a class="nav-link" href="/profile/${username}">Profile</a>
-                </li>
             </ul>
         </div>
     </nav>
 </header>
-<jsp:include page="/resources/fragments/js.jsp"></jsp:include>
+
+<container class="d-flex  justify-content-around align-items-center">
+    <div class="col-md-auto w-100 d-flex flex-column justify-content-around align-items-center">
+        <a type="button" class="w-100 m-2 btn btn-primary">Create Test</a>
+        <a type="button" href="admin/users" class="w-100 m-2 btn btn-primary">Edit User</a>
+        <a type="button" href="/admin/usersBlocked" class="w-100 m-2 btn btn-primary">Blocked Users</a>
+    </div>
+</container>
+<jsp:include page="/resources/fragments/js.jsp"/>
 </body>
 </html>

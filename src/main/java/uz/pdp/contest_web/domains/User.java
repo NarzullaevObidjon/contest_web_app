@@ -6,6 +6,7 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,13 +35,14 @@ public class User implements BaseEntity {
     private LocalDateTime createdAt;
     private Long points;
     private String country;
+
     @Enumerated(EnumType.STRING)
     private Role role;
-    private String blockCause;
     @Timestamp
     private LocalDateTime blockedTill;
     @OneToOne
     private Document photoDocumentId;
+    private String blockCause;
     @OneToMany(mappedBy = "user")
     private Set<Certificate> certificates;
     @OneToMany(mappedBy = "user")
@@ -65,5 +67,8 @@ public class User implements BaseEntity {
         this.role = Role.USER;
         this.points=0l;
         this.certificates= new HashSet<>();
+    }
+    public String parseDate() {
+        return this.createdAt.format(DateTimeFormatter.ofPattern("dd - MMM yyyy HH:mm"));
     }
 }

@@ -17,13 +17,13 @@ public class EmailSender {
 
         Session session = Session.getInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("obidsattarovich3600@gmail.com", "qabwtnqpmespcvbf");
+                return new PasswordAuthentication("tulaevmuhammadman@gmail.com", "mlzwzcieqwskrksq");
             }
         });
 
         Message message = new MimeMessage(session);
         try {
-            message.setFrom(new InternetAddress("obidsattarovich3600@gmail.com"));
+            message.setFrom(new InternetAddress("tulaevmuhammadman@gmail.com"));
 //            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("tulaevmuhammad12@gmail.com"));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
             message.setSubject(subject);

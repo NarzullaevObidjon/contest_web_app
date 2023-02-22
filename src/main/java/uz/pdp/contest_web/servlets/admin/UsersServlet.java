@@ -40,7 +40,7 @@ public class UsersServlet extends HttpServlet {
         UserDAO userDAO = UserDAO.get();
 //        userDAO.save(user);
         request.setAttribute("users", userDAO.findAll().stream().filter(u->!u.getStatus().equals(User.Status.DELETED)).collect(Collectors.toList()));
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/views/admin/users.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/resources/pages/admin/users.jsp");
         requestDispatcher.forward(request, response);
     }
 

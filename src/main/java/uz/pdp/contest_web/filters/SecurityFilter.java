@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-//@WebFilter(filterName = "SecurityFilter", value = "/*")
+@WebFilter(filterName = "SecurityFilter", value = "/*")
 public class SecurityFilter implements Filter {
 
     private static final UserDAO authUserDAO = UserDAO.get();
@@ -24,8 +24,11 @@ public class SecurityFilter implements Filter {
             "/contest.*",
             "/auth/signup",
             "/",
+            "/admin.*",
             "/auth/login",
-            "/admin.*"
+            "/auth/logout",
+            "/resources.*",
+            "/profile.*"
     );
 
     private static final Predicate<String> isOpen = o -> {
@@ -43,40 +46,37 @@ public class SecurityFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
         String requestURI = request.getRequestURI();
-        if (checkForRememberMe(request)) {
-            chain.doFilter(request, response);
-        } else {
-            if (!isOpen.test(requestURI)) {
-                HttpSession session = request.getSession();
-                Object username = session.getAttribute("username");
-                Object role = session.getAttribute("role");
-                if (Objects.isNull(username)) {
-                    response.sendRedirect("/auth/login?next=" + requestURI);
+        if (!isOpen.test(requestURI)) {
+            HttpSession session = request.getSession();
+            Object username = session.getAttribute("username");
+            Object role = session.getAttribute("role");
+            if (Objects.isNull(username)) {
+                response.sendRedirect("/auth/login?next=" + requestURI);
+            }else {
+                if (Objects.equals("USER", role) && isAdminPages.test(requestURI)) {
+                    response.sendError(403, "Permission denied");
                 } else {
-                    if (Objects.equals("USER", role) && isAdminPages.test(requestURI)) {
-                        response.sendError(403, "Permission denied");
-                    } else {
-                        chain.doFilter(request, response);
-                    }
+                    chain.doFilter(request, response);
                 }
-            } else {
-                chain.doFilter(request, response);
             }
+        } else {
+            chain.doFilter(request, response);
         }
+
     }
 
-    private boolean checkForRememberMe(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        if (session.getAttribute("username") != null) return true;
-        for (Cookie cookie : request.getCookies()) {
-            String cookieName = cookie.getName();
-            if (cookieName.equals("rememberMe")) {
-                User authUser = authUserDAO.findById(Long.valueOf(cookie.getValue()));
-                session.setAttribute("role", authUser.getRole());
-                session.setAttribute("username", authUser.getUsername());
-                return true;
-            }
-        }
-        return false;
-    }
+//    private boolean checkForRememberMe(HttpServletRequest request) {
+//        HttpSession session = request.getSession();
+//        if (session.getAttribute("username") != null) return true;
+//        for (Cookie cookie : request.getCookies()) {
+//            String cookieName = cookie.getName();
+//            if (cookieName.equals("rememberMe")) {
+//                User authUser = authUserDAO.findById(Long.valueOf(cookie.getValue()));
+//                session.setAttribute("role", authUser.getRole());
+//                session.setAttribute("username", authUser.getUsername());
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 }

@@ -42,7 +42,7 @@ public class UsersBlackListServlet extends HttpServlet {
         UserDAO userDAO = UserDAO.get();
 //        userDAO.save(user);
         request.setAttribute("users", userDAO.findAll().stream().filter(u->u.getStatus().equals(User.Status.BLOCKED)).collect(Collectors.toList()));
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/views/admin/usersBlackList.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/resources/pages/admin/usersBlackList.jsp");
         requestDispatcher.forward(request, response);
     }
 

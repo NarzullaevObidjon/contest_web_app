@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Contest ${test.getNumber()}</title>
-    <jsp:include page="/fragments/css.jsp"></jsp:include>
+    <jsp:include page="/resources/fragments/css.jsp"></jsp:include>
     <style>
         .table-nostriped tbody tr:nth-of-type(odd) {
             background-color: transparent !important;
@@ -85,6 +85,6 @@
         </div>
     </c:forEach>
 </div>
-<jsp:include page="/fragments/js.jsp"></jsp:include>
+<jsp:include page="/resources/fragments/js.jsp"></jsp:include>
 </body>
 </html>

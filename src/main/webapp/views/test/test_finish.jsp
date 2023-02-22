@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>Results</title>
-    <jsp:include page="/fragments/css.jsp"></jsp:include>
+    <jsp:include page="/resources/fragments/css.jsp"></jsp:include>
     <style>
         .table-nostriped tbody tr:nth-of-type(odd) {
             background-color: transparent !important;
@@ -49,6 +49,6 @@
         <a class="btn btn-success" href="/">Home</a>
     </div>
 </div>
-<jsp:include page="/fragments/js.jsp"></jsp:include>
+<jsp:include page="/resources/fragments/js.jsp"></jsp:include>
 </body>
 </html>

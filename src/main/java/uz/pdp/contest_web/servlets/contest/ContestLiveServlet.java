@@ -36,6 +36,10 @@ public class ContestLiveServlet extends HttpServlet {
             response.sendRedirect("/");
             return;
         }
+        if(username==null){
+            response.sendRedirect("/auth/login");
+            return;
+        }
         request.setAttribute("question", test.getQuestions().get(0));
         request.setAttribute("curr", 1);
         request.setAttribute("prev", 0);

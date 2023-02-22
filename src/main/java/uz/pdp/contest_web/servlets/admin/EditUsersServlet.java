@@ -18,7 +18,7 @@ public class EditUsersServlet extends HttpServlet {
         Long id = Long.valueOf(request.getParameter("userId"));
         UserDAO userDAO = UserDAO.get();
         request.setAttribute("user", userDAO.findById(id));
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/views/admin/editUser.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/resources/pages/admin/editUser.jsp");
         requestDispatcher.forward(request, response);
     }
 
@@ -43,7 +43,7 @@ public class EditUsersServlet extends HttpServlet {
         user.setBlockedTill(blockTill);
         userDAO.update(user);
         request.setAttribute("users", userDAO.findAll().stream().filter(u->!u.getStatus().equals(User.Status.DELETED)).collect(Collectors.toList()));
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/views/admin/users.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/resources/pages/admin/users.jsp");
         requestDispatcher.forward(request, response);
     }
 }

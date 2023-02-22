@@ -34,7 +34,9 @@ public abstract class BaseDAO<T extends BaseEntity, ID extends Serializable> {
     }
 
     public boolean update(T t) {
+        begin();
         em.merge(t);
+        commit();
         return true;
     }
 

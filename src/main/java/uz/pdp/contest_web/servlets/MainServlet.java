@@ -19,9 +19,15 @@ public class MainServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        request.getRequestDispatcher("/views/main.jsp").forward(request,response);
+        String username = String.valueOf(request.getSession().getAttribute("username"));
+        String role = String.valueOf(request.getSession().getAttribute("role"));
+        request.setAttribute("username", username);
+        if (role.equals("ADMIN")) {
+            request.getRequestDispatcher("/resources/pages/admin/main.jsp").forward(request, response);
+        } else
+            request.getRequestDispatcher("/views/main.jsp").forward(request, response);
     }
-    public void destroy() {
 
+    public void destroy() {
     }
 }

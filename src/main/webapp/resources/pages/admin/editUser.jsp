@@ -12,8 +12,8 @@
     <title>
         Edit User
     </title>
+    <jsp:include page="/resources/fragments/css.jsp"/>
     <link rel="stylesheet" href="/resources/css/admin/editUser.css">
-    <jsp:include page="/fragments/css.jsp"/>
 </head>
 <body>
 <nav class="navbar bg-body-tertiary">
@@ -110,7 +110,7 @@
     </div>
 </form>
 </container>
-</body>
+<jsp:include page="/resources/fragments/js.jsp"/>
 <script src="/resources/js/admin/editUser.js"></script>
-<jsp:include page="/fragments/js.jsp"/>
+</body>
 </html>

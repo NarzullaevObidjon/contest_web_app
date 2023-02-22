@@ -59,7 +59,7 @@
     </style>
 </head>
 <body>
-<form method="post" action="/auth/signUp?email=${email}">
+<form method="post" action="/auth/signup?email=${email}">
     <h3>Verification code sent to ${email}</h3>
     <label for="code">Verification Code:</label>
     <input type="text" name="code" id="code">
