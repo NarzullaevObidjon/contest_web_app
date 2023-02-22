@@ -1,7 +1,7 @@
 package uz.pdp.contest_web.filters;
 
 import jakarta.servlet.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -65,18 +65,18 @@ public class SecurityFilter implements Filter {
 
     }
 
-//    private boolean checkForRememberMe(HttpServletRequest request) {
-//        HttpSession session = request.getSession();
-//        if (session.getAttribute("username") != null) return true;
-//        for (Cookie cookie : request.getCookies()) {
-//            String cookieName = cookie.getName();
-//            if (cookieName.equals("rememberMe")) {
-//                User authUser = authUserDAO.findById(Long.valueOf(cookie.getValue()));
-//                session.setAttribute("role", authUser.getRole());
-//                session.setAttribute("username", authUser.getUsername());
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
+    private boolean checkForRememberMe(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        if (session.getAttribute("username") != null) return true;
+        for (Cookie cookie : request.getCookies()) {
+            String cookieName = cookie.getName();
+            if (cookieName.equals("rememberMe")) {
+                User authUser = authUserDAO.findById(Long.valueOf(cookie.getValue()));
+                session.setAttribute("role", authUser.getRole());
+                session.setAttribute("username", authUser.getUsername());
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -14,8 +14,13 @@ import java.util.Set;
 public class ProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String username;
+        if(request.getParameter("profile")!=null){
+            username=request.getParameter("profile");
+        }else {
+            username = request.getPathInfo().substring(1);
+        }
         UserDAO userDAO = UserDAO.get();
-        String username = request.getPathInfo().substring(1);
         User byUsername = userDAO.getByUsername(username);
         if(byUsername==null){
             response.sendRedirect("/main");

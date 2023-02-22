@@ -14,7 +14,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item active">
                     <a class="nav-link" href="http://localhost:8080">Home</a>
                 </li>
@@ -25,22 +25,47 @@
                     <a class="nav-link" href="http://localhost:8080/contest-live">Live Contest</a>
                 </li>
                 <c:if test="${username==null}">
-                    <li class="nav-item">
-                        <a class="nav-link" href="http://localhost:8080/auth/login?next=http://localhost:8080">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="http://localhost:8080/auth/signup">Sign Up</a>
-                    </li>
-                </c:if>
-                <c:if test="${username!=null}">
-                    <li class="nav-item">
-                        <a class="nav-link"href="http://localhost:8080/auth/logout">Log Out</a>
-                    </li>
-                </c:if>
-                <li class="nav-item">
-                    <a class="nav-link" href="/profile/${username}">Profile</a>
-                </li>
+                <li class="nav-item dropdown bl">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Register
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/auth/login" style="color: black">Login</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/auth/signup" style="color: black">Sign Up</a>
+                        </li>
+                    </ul>
+                    </c:if>
+                    <c:if test="${username!=null}">
+                <li class="nav-item dropdown bl">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Logged in
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/profile/${username}" style="color: black">Profile</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/auth/logout" style="color: black">Log Out</a>
+                        </li>
+                    </ul>
+                    </c:if>
             </ul>
+            <form class="d-flex" role="search" action="/profile">
+                <input name="profile" class="form-control me-2" type="search" placeholder="Jump to ..."
+                       aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
         </div>
     </nav>
 </header>

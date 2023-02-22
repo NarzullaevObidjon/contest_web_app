@@ -23,12 +23,12 @@ public class RegisterServlet extends HttpServlet {
 
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/auth/signUp.jsp");
         dispatcher.forward(request, response);
     }
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String code1 = request.getParameter("code");
         String email = request.getParameter("email");
         if (code1 != null) {
@@ -45,12 +45,18 @@ public class RegisterServlet extends HttpServlet {
         } else {
             String code = BaseUtil.generateCode();
             map.put(email, new EmailObject(code, System.currentTimeMillis() + 60 * 1000));
-            CompletableFuture.runAsync(() -> {
-                EmailSender.sendEmail(email, "Sarlavha", "Confirmation code : " + code);
-            });
+            sendEmail(email,"title","body");
             request.setAttribute("email", email);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/auth/confirmation.jsp");
             dispatcher.forward(request, response);
+        }
+
+    }
+    static void sendEmail(String email, String title, String body){
+        try {
+            EmailSender.sendEmail(email,title,body);
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
         }
     }
 

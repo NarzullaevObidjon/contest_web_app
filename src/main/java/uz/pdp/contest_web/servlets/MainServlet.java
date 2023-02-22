@@ -2,10 +2,7 @@ package uz.pdp.contest_web.servlets;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
 import uz.pdp.contest_web.daos.UserDAO;
 
 import java.io.IOException;
@@ -19,10 +16,11 @@ public class MainServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        String username = String.valueOf(request.getSession().getAttribute("username"));
-        String role = String.valueOf(request.getSession().getAttribute("role"));
+        HttpSession session = request.getSession();
+        Object username = session.getAttribute("username");
+        Object role = session.getAttribute("role");
         request.setAttribute("username", username);
-        if (role.equals("ADMIN")) {
+        if (role!=null && role.equals("ADMIN")) {
             request.getRequestDispatcher("/resources/pages/admin/main.jsp").forward(request, response);
         } else
             request.getRequestDispatcher("/views/main.jsp").forward(request, response);

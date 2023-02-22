@@ -31,6 +31,9 @@ public class Login extends HttpServlet {
         if (user == null || !password.equals(user.getPassword())) {
             response.sendRedirect("/auth/login");
         }else if(next!=null){
+            HttpSession session = request.getSession();
+            session.setAttribute("username",username);
+            session.setAttribute("role",user.getRole());
             Cookie cookie = new Cookie("username", username);
             cookie.setPath("/");
             cookie.setMaxAge(5 * 60 * 60);

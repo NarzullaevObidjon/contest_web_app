@@ -8,32 +8,39 @@ import java.util.Properties;
 
 public class EmailSender {
 
-    public static boolean sendEmail(String email, String subject,String  body) {
-        Properties props = new Properties();
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
+    private static final String username = "obidsattarovich3600@gmail.com";
+    private static final String password = "qabwtnqpmespcvbf";
 
-        Session session = Session.getInstance(props, new Authenticator() {
+    public static void sendEmail(String email, String a,String  b) throws MessagingException {
+
+        var properties = getProperties();
+        var session = getSession(properties, username, password);
+        var message = new MimeMessage(session);
+        var recipient = email;
+
+        message.setSubject("This is Subject For Test Message");
+        message.setContent("<h1 style=\"color:red;\">Body of mail here</h1>","text/html");
+        message.setFrom(new InternetAddress(username));
+        message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+        Transport.send(message);
+    }
+
+    private static Properties getProperties() {
+        Properties properties = new Properties();
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "465");
+        properties.put("mail.smtp.ssl.enable", "true");
+        properties.put("mail.smtp.auth", "true");
+        return properties;
+    }
+
+
+    private static Session getSession(Properties properties, String username, String password) {
+        return Session.getInstance(properties, new Authenticator() {
+            @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("tulaevmuhammadman@gmail.com", "mlzwzcieqwskrksq");
+                return new PasswordAuthentication(username, password);
             }
         });
-
-        Message message = new MimeMessage(session);
-        try {
-            message.setFrom(new InternetAddress("tulaevmuhammadman@gmail.com"));
-//            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("tulaevmuhammad12@gmail.com"));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
-            message.setSubject(subject);
-            message.setText(body);
-            Transport.send(message);
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
-        }
-        return false;
     }
 }
-
-
