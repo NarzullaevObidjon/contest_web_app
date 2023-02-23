@@ -32,4 +32,7 @@ public class Document implements BaseEntity{
     @OneToOne(mappedBy = "documentId")
     private Certificate certificate;
 
+    public Document(Long id) {
+        this.id = id;
+    }
 }

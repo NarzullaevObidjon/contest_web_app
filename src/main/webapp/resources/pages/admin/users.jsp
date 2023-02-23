@@ -60,7 +60,7 @@
 <%--            </c:choose>--%>
         </td>
         <td>
-            <a href="${pageContext.request.contextPath}/admin/users/edit?userId=<c:out value="${user.getId()}"/>"><img src="/resources/images/edit_icon.png" width="25px" height="25px" alt="icon"></a>
+            <a href="${pageContext.request.contextPath}/admin/users/edit?userId=<c:out value="${user.getId()}"/>"><img src="edit_icon.png" width="25px" height="25px" alt="icon"></a>
         </td>
     </tr>
     </c:forEach>

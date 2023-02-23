@@ -11,6 +11,7 @@
 <head>
     <title>${user.getUsername()}</title>
     <jsp:include page="/resources/fragments/css.jsp"/>
+
     <style>
         /* Import Font Dancing Script */
         @import url(https://fonts.googleapis.com/css?family=Dancing+Script);
@@ -249,10 +250,10 @@
 <!-- Sidenav -->
 <div class="sidenav">
     <div class="profile">
-        <img src="${user.getPhotoDocumentId().getFilePath()}" alt="" width="100" height="100">
+        <img src="/resources/images/ava.png" alt="" width="100" height="100">
 
         <div class="name">
-           ${user.getUsername()}
+            ${user.getUsername()}
         </div>
         <div class="job">
             ${user.getFirstName()} ${user.getLastName()}
@@ -264,10 +265,12 @@
             <a class="active">Profile</a>
             <hr align="center">
         </div>
-        <div class="url">
-            <a href="/profile/update/${user.getUsername()}">Update</a>
-            <hr align="center">
-        </div>
+        <c:if test="${user.getUsername().equals(username1)}">
+            <div class="url">
+                <a href="/profile/update/${user.getUsername()}">Update</a>
+                <hr align="center">
+            </div>
+        </c:if>
     </div>
 </div>
 <!-- End -->
@@ -323,38 +326,42 @@
 
 
 
-
+    <c:if test="${user.getUsername().equals(username1)}">
     <h2>Tests</h2>
-    <div class="card row">
-        <div class="col-md-10 offset-1">
-            <%--        <a href="/students/add" class="btn btn-success">Add</a>--%>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Test Title</th>
-                    <th scope="col">Test Number</th>
-                    <th scope="col">Points</th>
-                    <th scope="col">Interval</th>
-                    <th scope="col">More</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${user.getResultUsers()}" var="test">
+    <div class="card">
+        <div class="row">
+            <div class="col-md-10 offset-1">
+                <table class="table table-striped">
+                    <thead>
                     <tr>
-                        <td>${test.getTest().getId()}</td>
-                        <td>${test.getTest().getTitle()}</td>
-                        <td>${test.getTest().getNumber()}</td>
-                        <td>${test.getPoints()}</td>
-                        <td>${test.getInterval()}</td>
-                        <td><a href="/contest/${test.getTest().getId()}">More</a></td>
+                        <th scope="col">ID</th>
+                        <th scope="col">Test Title</th>
+                        <th scope="col">Test Number</th>
+                        <th scope="col">Test Start Time</th>
+                        <th scope="col">Points</th>
+                        <th scope="col">Interval</th>
+                        <th scope="col">More</th>
                     </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${user.rr()}" var="test">
+                        <tr>
+                            <td>${test.getTest().getId()}</td>
+                            <td>${test.getTest().getTitle()}</td>
+                            <td>${test.getTest().getNumber()}</td>
+                            <td>${test.getTest().parseDate()}</td>
+                            <td>${test.getPoints()}</td>
+                            <td>${Math.round(test.getInterval()/60000)} min${Math.round(test.getInterval()/1000)} sec</td>
+                            <td><a href="/contest/${test.getTest().getId()}">More</a></td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
+</c:if>
 <jsp:include page="/resources/fragments/js.jsp"/>
 
 </body>

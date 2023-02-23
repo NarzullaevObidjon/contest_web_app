@@ -47,10 +47,10 @@
                 <thead>
                 <tr>
                     <th scope="col">
-                        <c:if test="${-1 != questions.get(i - 1).getPhotoDocumentId().getId()}">
-                                <img src="${questions.get(i-1).getPathById()}" width="200px" height="200px">
-                            <p>${i} ) ${questions.get(i-1).getQuestion()}</p>
-                        </c:if>
+<%--                        <c:if test="${-1 != questions.get(i - 1).getPhotoDocumentId().getId()}">--%>
+<%--                                <img src="${questions.get(i-1).getPathById()}" width="200px" height="200px">--%>
+<%--                            <p>${i} ) ${questions.get(i-1).getQuestion()}</p>--%>
+<%--                        </c:if>--%>
                         <c:if test="${-1 == questions.get(i - 1).getPhotoDocumentId().getId()}">
                             <p>${i} ) ${questions.get(i-1).getQuestion()}</p>
                         </c:if>

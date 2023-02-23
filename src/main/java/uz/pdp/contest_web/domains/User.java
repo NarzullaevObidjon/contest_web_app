@@ -47,6 +47,8 @@ public class User implements BaseEntity {
     private Set<Certificate> certificates;
     @OneToMany(mappedBy = "user")
     private Set<ResultUser> resultUsers;
+    @OneToMany(mappedBy = "creator_id")
+    private Set<Test> tests;
 
     @OneToMany(mappedBy = "user")
     private Set<ResultQuestion> resultQuestions;
@@ -68,6 +70,11 @@ public class User implements BaseEntity {
         this.points=0l;
         this.certificates= new HashSet<>();
     }
+
+    public User(Long id) {
+        this.id = id;
+    }
+
     public String parseDate() {
         return this.createdAt.format(DateTimeFormatter.ofPattern("dd - MMM yyyy HH:mm"));
     }

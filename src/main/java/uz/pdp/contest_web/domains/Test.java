@@ -36,8 +36,8 @@ public class Test implements BaseEntity {
     @Timestamp
     private LocalDateTime endTime;
     private Long interval;
-    @Basic(optional = false)
-    private Long creator_id;
+    @ManyToOne
+    private User creator_id;
     @OneToMany(mappedBy = "test")
     private List<Question> questions;
     @OneToMany(mappedBy = "test")

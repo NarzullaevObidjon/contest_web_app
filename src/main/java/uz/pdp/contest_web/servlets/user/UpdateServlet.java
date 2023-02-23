@@ -1,4 +1,4 @@
-package uz.pdp.contest_web.servlets;
+package uz.pdp.contest_web.servlets.user;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;

@@ -25,29 +25,30 @@ public class Login extends HttpServlet {
         String next = request.getParameter("next");
         String password = request.getParameter("password");
         UserDAO userDAO = UserDAO.get();
-
         User user = userDAO.getByUsername(username);
-
         if (user == null || !password.equals(user.getPassword())) {
             response.sendRedirect("/auth/login");
-        }else if(next!=null){
+        } else if (next != null) {
             HttpSession session = request.getSession();
-            session.setAttribute("username",username);
-            session.setAttribute("role",user.getRole());
+            session.setAttribute("username", username);
+            session.setAttribute("role", user.getRole());
             Cookie cookie = new Cookie("username", username);
             cookie.setPath("/");
             cookie.setMaxAge(5 * 60 * 60);
             response.addCookie(cookie);
             response.sendRedirect(next);
-        }else{
+        } else {
             HttpSession session = request.getSession();
-            session.setAttribute("username",username);
-            session.setAttribute("role",user.getRole());
+            session.setAttribute("username", username);
+            session.setAttribute("role", user.getRole());
             Cookie cookie = new Cookie("username", username);
             cookie.setPath("/");
             cookie.setMaxAge(5 * 60 * 60);
             response.addCookie(cookie);
-            response.sendRedirect("/");
+            if (user.getRole().equals(User.Role.ADMIN)) {
+                response.sendRedirect("/admin");
+            } else
+                response.sendRedirect("/");
         }
 
     }

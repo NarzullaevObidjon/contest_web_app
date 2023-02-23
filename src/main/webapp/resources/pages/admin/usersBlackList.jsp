@@ -61,7 +61,7 @@
 <%--            </c:choose>--%>
         </td>
         <td>
-            <a href="/admin/usersBlocked/edit?userId=<c:out value="${user.getId()}"/>"><img src="/resources/images/edit_icon.png" width="25px" height="25px"></a>
+            <a href="/admin/usersBlocked/edit?userId=<c:out value="${user.getId()}"/>"><img src="/pages/admin/edit_icon.png" width="25px" height="25px"></a>
         </td>
     </tr>
     </c:forEach>

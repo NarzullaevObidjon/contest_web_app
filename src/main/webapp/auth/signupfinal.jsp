@@ -84,7 +84,7 @@
   <label for="password">Password : </label>
   <input name="password" type="password" id="password">
 
-  <label for="password">Confirm password : </label>
+  <label for="confirm-password">Confirm password : </label>
   <input name="confirm-password" type="password" id="confirm-password">
 
   <label for="country">Country</label>
